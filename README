@@ -1,0 +1,19 @@
+README
+
+Home Watchdog is a web-enabled home automation framework.
+
+It is my 2011 senior project for Western Washington University, EET department.
+
+Microcontroller: K60N512 ARM Cortex-M4
+Operating System: MQX RTOS
+
+Because of licensing, I will only be providing the code for my project.
+The operating system was free, courtesy of Freescale with my MCU. The download is 
+hidden behind a licensing agreement that you must accept.
+
+http://www.freescale.com/mqx
+
+Thanks for showing interest in my project!
+
+-T.J.
+http://www.tjtelan.com
