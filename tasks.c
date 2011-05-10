@@ -4,10 +4,11 @@
 * Date : 6 May 2011
 *****************************************************************************/
 
+#include "includes.h"
+
 #include <mqx.h>
 #include <bsp.h> 
 #include <fio.h>
-
 
 #if ! BSPCFG_ENABLE_IO_SUBSYSTEM
 #error This application requires BSPCFG_ENABLE_IO_SUBSYSTEM defined non-zero in user_config.h. Please recompile BSP with this option.
@@ -20,30 +21,26 @@
 
 
 /* Task IDs */
-#define HELLO_TASK 5
+#define START_TASK 5
 
-extern void hello_task(uint_32);
+extern void start_task(uint_32);
 
 
 const TASK_TEMPLATE_STRUCT  MQX_template_list[] = 
 { 
    /* Task Index,   Function,   Stack,  Priority, Name,     Attributes,          Param, Time Slice */
-    { HELLO_TASK,   hello_task, 1500,   5,        "hello",  MQX_AUTO_START_TASK, 0,     0 },
+    { START_TASK,   start_task, 1500,   5,        "start",  MQX_AUTO_START_TASK, 0,     0 },
     { 0 }
 };
 
-/*TASK*-----------------------------------------------------
-* 
-* Task Name    : hello_task
-* Comments     :
-*    This task prints " Hello World "
-*
-*END*-----------------------------------------------------*/
-void hello_task
-   (
-      uint_32 initial_data
-   )
-{
+
+
+/*----------------------------------------------------------------------------
+- Task Name : start_task
+- Comments :
+----------------------------------------------------------------------------*/
+
+void start_task(uint_32 initial_data){
    printf("Hello World\n"); 
    
    /* 
