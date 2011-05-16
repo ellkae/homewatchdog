@@ -34,7 +34,19 @@ const TASK_TEMPLATE_STRUCT  MQX_template_list[] =
 };
 
 
-
+#define GPIO1           (GPIO_PORT_C | GPIO_PIN18)
+#define GPIO2           (GPIO_PORT_E | GPIO_PIN0)
+#define GPIO3           (GPIO_PORT_E | GPIO_PIN28)
+#define GPIO4           (GPIO_PORT_B | GPIO_PIN8)
+#define GPIO5           (GPIO_PORT_E | GPIO_PIN28) // SD card is uses this port...
+#define GPIO6           (GPIO_PORT_B | GPIO_PIN9)
+#define GPIO7           (GPIO_PORT_E | GPIO_PIN27)
+#define GPIO8           (GPIO_PORT_E | GPIO_PIN5)
+#define GPIO9           (GPIO_PORT_C | GPIO_PIN19)
+#define BSP_LED1        (GPIO_PORT_A | GPIO_PIN11)
+#define BSP_LED2        (GPIO_PORT_A | GPIO_PIN28)
+#define BSP_LED3        (GPIO_PORT_A | GPIO_PIN29)
+#define BSP_LED4        (GPIO_PORT_A | GPIO_PIN10)
 /*----------------------------------------------------------------------------
 - Task Name : start_task
 - Comments :
@@ -43,6 +55,34 @@ const TASK_TEMPLATE_STRUCT  MQX_template_list[] =
 void start_task(uint_32 initial_data){
    printf("Hello World\n"); 
    
+    FILE_PTR output_port;
+
+    const uint_32 output_set[] = {
+        GPIO1,
+        GPIO2,
+        GPIO3,
+        GPIO4,
+        GPIO5,
+        GPIO6,
+        GPIO7,
+        GPIO8,
+        GPIO9,
+        BSP_LED1,
+        BSP_LED2,
+
+        BSP_LED4,
+        GPIO_LIST_END
+  };
+  
+  // Set GPIO array as outputs
+  output_port = fopen("gpio:write", (char_ptr) &output_set);
+  
+  
+  if (output_port){
+        printf("Turn ons?\n");
+        ioctl(output_port, GPIO_IOCTL_WRITE_LOG0, &output_port);
+
+  }
    /* 
    ** This example uses polled serial I/O by default. Should it be modified
    ** to use interrupt driven serial drivers, you will need to uncomment the
