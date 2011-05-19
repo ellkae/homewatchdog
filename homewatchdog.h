@@ -7,4 +7,6 @@
 #ifndef _homewatchdog_h_
 #define _homewatchdog_h_
 
+boolean InitializeIO(void);
+
 #endif
