@@ -1,0 +1,416 @@
+<!DOCTYPE HTML SYSTEM>
+
+<html>
+<head>
+	<title>Freescale Kinetis MQX Webserver</title>
+
+<style type="text/css">
+
+
+
+.header{
+	background-color: #ffffff;
+	vertical-align: top; 
+	text-align: right; 
+	padding-right: 5px;	
+	
+}
+.headerText{
+	text-align: right;
+}
+
+
+.padMe5 {
+	display: block;
+	text-align: right;
+	font-weight: bold;
+	margin: 0px;
+	padding: 5px 0px 0px 0px;
+}
+
+.Hdr {
+	font-weight: bold;
+}
+
+body {
+	padding: 0px;
+	margin: 0px;
+	background-color: #FFF;
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	font-size: 75%;
+	font-weight: normal;
+	color: #51626F;
+}
+
+a{
+	color: #017bba;
+	text-decoration: none;
+}
+
+a:hover{
+	color: #017bba;
+	text-decoration: underline;
+}
+
+h1 {
+	line-height: 28px;
+	font-size: 1.2em;
+	font-weight: bold;
+	margin: 0px;
+	padding: 0px;
+	text-indent: 0px;
+}
+
+#mncnt {
+	padding: 0px 0px 0px 12px;
+}
+
+.cframe{
+	margin: 0px 0px 0px 160px;
+}
+
+
+
+/* Begin Left Nav CSS  */
+
+#lfnvcl {
+	float: left;
+	width: 161px;
+	margin: 0px;
+	padding: 0px;
+}
+
+#lnv h1, #lnv h2, #lnv h3, #lnv h4, #lnv h5, #lnv h6 {
+	font-size: 1em;
+	margin: 0px;
+	padding: 0px;
+	font-weight: normal;
+}
+
+#lnv, #lnv ul { /* all left nav lists */
+	padding: 0px 0px 1px 1px;
+	margin: 0px;
+	list-style: none;
+	float : left;
+	width : 157px;
+	display: block;
+	/* Commented by rvi01z for CCT57479 on 13 May 2008 start
+	background-color: #FFF;
+	Commented rvi01z for CCT57479 on 13 May 2008 End */
+	font-size: .9em;
+	/* Commented by rvi01z for CCT57479 on 13 May 2008 start
+	border: 1px solid #C4CFD1;
+	Commented rvi01z for CCT57479 on 13 May 2008 End */
+}
+
+#lnv a {
+	color: #51626F;
+	text-decoration: none;
+}
+
+#lnv a:hover {
+	color: #51626F;
+	text-decoration: underline;
+}
+
+#lnv .pt {
+	background-color: #C4CFD1;
+}
+
+#lnv .ar {
+/*	background: url(arrow.gif) center right no-repeat;*/
+	background-color: #E0E6E6;
+}
+
+#lnv .sp {
+	background-color: #D3DBDC;
+}
+
+#lnv .usbnav { 
+	margin: -1px 0px 0px 0px;
+}
+
+
+#lnv li { /* all list items */
+	position : relative;
+	float : left;
+	line-height : 16px;
+	margin: 0px;
+	padding: 0px;
+	width: 157px;
+	background-color: #FFF;
+	z-index: 50;
+}
+	
+#lnv li ul { /* second-level lists */
+	position : absolute;
+	left: -999em;
+	margin-left : 157px;
+	margin-top : -24px;
+	font-size: 1em;
+}
+
+
+	
+#lnv li a {
+	width: 139px;
+	w\idth : 139px;
+	display : block;
+	font-weight : normal;
+	text-decoration : none;
+	background-color: #E0E6E6;
+	margin : 0px;
+	padding: 3px 12px 3px 5px;
+	border-top: 1px solid #FFF;
+}
+	
+#lnv li a:hover {
+	background-color : #C4CFD1;
+}
+	
+#lnv li:hover ul ul, #lnv li:hover ul ul ul, #lnv li.sfhover ul ul, #lnv li.sfhover ul ul ul {
+	left: -999em;
+	background-color: #FFF;
+}
+	
+#lnv li:hover ul, #lnv li li:hover ul, #lnv li li li:hover ul, #lnv li.sfhover ul, #lnv li li.sfhover ul, #lnv li li li.sfhover ul { /* lists nested under hovered list items */
+	left: auto;
+	background-color: #FFF;
+}
+	
+#ftr{
+	position: relative;
+	float: left;
+	clear: both;
+	display: block;
+	padding: 0px 0px 0px 0px;
+	margin: 200px 0px 10px 0px;
+	width: 988px;
+	height: 23px;
+	line-height: 23px;
+	border: 1px solid #C3CFD1;
+	font-size: .9em;
+	background-color: #FFF;
+	z-index: 1;
+}
+
+
+#ftr .copyright {
+	float: right;
+	padding-right: 5px;
+}
+
+
+
+
+div.hrw {
+  background: #aaaaaa repeat-x scroll center;
+	margin: 0;
+	padding: 0;
+	height: 1px;
+}
+div.hrw hr {
+  display: none;
+	margin: 0;
+	padding: 0;
+}
+	
+</style>	
+
+<script type="text/javascript">
+
+sfHover2 = function() {
+	var navthree = document.getElementById("lnv");
+	if (navthree){
+		var sfEls2 = document.getElementById("lnv").getElementsByTagName("LI");
+		for (var i=0; i<sfEls2.length; i++) {
+			sfEls2[i].onmouseover=function() {
+				this.className+=" sfhover";
+				hideselects('hidden');
+			}
+			sfEls2[i].onmouseout=function() {
+				this.className=this.className.replace(new RegExp(" sfhover\\b"), "");
+				hideselects('visible');
+			}
+		}
+	}
+}
+
+if (window.attachEvent) {
+	window.attachEvent("onload", sfHover2);
+}
+
+function hideselects(state) {
+	for(i=0;i<document.forms.length;i++){ // if there are forms on the page
+		frm = document.forms[i];
+		var inputs = frm.getElementsByTagName("SELECT");
+		for (j=0;j<inputs.length;j++){
+			inputs[j].style.visibility = state;
+		}
+	}
+}
+
+
+// request.js
+
+function makeRequest(url) {
+	var http_request = false;
+
+	url = url + "?sid=" + Math.random();
+
+	data_received = 1;
+        if (window.XMLHttpRequest) { // Mozilla, Safari,...
+        	http_request = new XMLHttpRequest();
+            	if (http_request.overrideMimeType) {
+                	http_request.overrideMimeType('text/xml');
+            	}
+        }
+	else if (window.ActiveXObject) { // IE
+ 		try {
+                	http_request = new ActiveXObject("Msxml2.XMLHTTP");
+            	}
+		catch (e) {
+			try {
+                    		http_request = new ActiveXObject("Microsoft.XMLHTTP");
+                	}
+			catch (e) {}
+            	}
+        }
+
+        if (!http_request) {
+        	alert('Giving up :( Cannot create an XMLHTTP instance');
+            	return false;
+        }
+
+        http_request.onreadystatechange = function() { alertContents(http_request); };
+        http_request.open('GET', url, true);
+        http_request.send(null);
+}
+
+function alertContents(http_request) {
+	if (http_request.readyState == 4) {
+		if (http_request.status == 200) {
+                	parse_vars(http_request.responseText);
+			data_received = 0;
+            	}
+		else {
+			data_received = 0;
+//               	alert('There was a problem with the request.');
+//			alert( http_request.status );
+//
+            	}
+        }
+}
+
+
+</script>
+
+</head>
+<body>
+
+<a href="http://www.freescale.com" title="Freescale"><img src="header.gif" alt="Freescale Semiconductor" width="990" height="50" border="0"></a>
+
+
+
+<div id="lfnvcl">
+	<ul id="lnv">
+	<li><h3><a href="mqx.html" class="pt">Webserver Home</a></h3></li>
+	<li><a href="accel.html">Accelerometer</a></li>
+	<li><a href="rtc.html">RTC</a></li>
+	<li><a href="led.html">LED Control</a></li>
+	<li><a href="status.html">Status</a></li>
+	<li><a href="game.html">Memory Game</a></li>
+	<li><a href="k60.html">K60 Family</a></li>
+	<li style="visibility: <% s_status_fn %>"><a href="sdcard/index.html">Browse SD Card</a></li>
+	</ul>
+</div>
+
+
+
+ <div id="mncnt" class="cframe">
+
+  <div class="padMe5"></div>
+  <div class="lcn" style="width: 594px; height: 269px">
+
+   <div class="hrw"><hr></div>
+   <h1>
+    <strong>Kinetis K60 Family</strong>
+    </h1>
+
+<div class="hrw"><hr></div>
+
+<ul>
+  <li>Flash, SRAM, and FlexMemory
+  <ul>
+    <li>256 KB-1 MB flash. Fast access, high reliability with four-level security protection
+    <li> 64 KB-128 KB of SRAM
+    <li>FlexMemory: 32 bytes-16 KB of usersegmentable byte write/erase EEPROM for data tables/system data. EEPROM with over 10M cycles and flash with 70 µsec write time (brownouts without data loss/corruption). No user or system intervention to complete programming and erase functions and full operation down to 1.71V. In addition, FlexNVM from 256 KB-512 KB for extra program code, data or EEPROM backup
+   </ul>
+  <li>Mixed-Signal Capability
+  <ul>
+    <li>Up to four high-speed 16-bit ADCs with configurable resolution. Single or differential output mode operation for improved noise rejection. 500 ns conversion time achievable with programmable delay block triggering
+    <li> Up to two 12-bit DACs for analog waveform generation for audio applications
+    <li> Up to three high-speed comparators providing fast and accurate motor over-current protection by driving PWMs to a safe state
+    <li> Up to four programmable gain amplifiers with x64 gain for small amplitude signal conversion
+    <li> Analog voltage reference provides an accurate reference to analog blocks, ADC and DAC, and replaces external voltage references to reduce system cost
+  </ul>
+  <li>Performance
+    <ul>
+      <li>ARM Cortex-M4 core + DSP. 100-180 MHz, single cycle MAC, single instruction multiple data (SIMD) extensions, optional single precision floating point unit
+    <li> Up to 32-channel DMA for peripheral and memory servicing with reduced CPU loading and faster system throughput
+    <li> Cross bar switch enables concurrent multi-master bus accesses, increasing bus bandwidth
+    <li> Up to 16 KB of instruction/data cache for optimized bus bandwidth and flash execution performance
+    <li> Independent flash banks allow concurrent code execution and firmware updating with no performance degradation or complex coding routines
+    </ul>
+   <li>Timing and Control
+     <ul>
+           <li> Up to four FlexTimers with a total of 20 channels. Hardware dead-time insertion and quadrature decoding for motor control
+    <li> Carrier modulator timer for infrared waveform generation in remote control applications
+    <li> Four-channel 32-bit periodic interrupt timer provides time base for RTOS task scheduler or trigger source for ADC conversion and programmable delay block
+    </ul>
+   <li>Human-Machine Interface
+     <ul>
+        <li>Hardware touch-sensing interface with up to 16 inputs. Operates in all low power modes (minimum current adder when enabled). Hardware implementation avoids software polling method. High sensitivity level allows use of overlay surfaces upto 5 mm thick
+     </ul>
+   <li>Connectivity and Communications
+      <ul>
+    <li> IEEE 1588 Ethernet MAC with hardware time stamping provides precision clock synchronization for real-time industrial control
+    <li> USB 2.0 On-The-Go (full and high speed). Device charge detect optimizes charging current/time for portable USB devices enabling longer battery life. Low-voltage regulator supplies up to 120 mA off chip at 3.3V to power external components from 5V input
+    <li> Up to six UARTs with IrDA support including one UART with ISO7816 smart card support. Variety of data size, format and transmission/reception settings supported for multiple industrial communication protocols
+    <li> Inter-IC Sound (I2S) serial interface for audio system interfacing
+    <li> Up to two CAN modules for industrial network bridging
+    <li> Up to three DSPI and two I2C
+    </ul>
+   <li> Reliability, Safety and Security
+     <ul>
+    <li> Hardware Encryption coprocessor for secure data transfer and storage. Faster than software implementations and with minimal CPU loading. Supports a wide variety of algorithms - DES, 3DES, AES, MD5, SHA-1, SHA-256
+    <li> System security and tamper detect with secure real-time clock with independent battery supply. Secure key storage with internal/external tamper detect for unsecure flash, temperature, clock, and supply voltage variations and physical attack detection
+    <li> Memory protection unit provides memory protection for all masters on the cross bar switch, increasing software reliability
+    <li> Cyclic redundancy check engine validates memory contents and communication data, increasing system reliability
+    <li> Independent-clocked COP guards against clock skew or code runaway for fail-safe applications such as the IEC 60730 safety standard for household appliances
+    <li> External watchdog monitor drives output pin to safe state external components if watchdog event occurs
+    </ul>
+   <li>External Peripheral Support
+    <ul>
+    <li> FlexBus external bus interface provides interface options to memories and peripherals such as graphics displays. Supports up to 6 chip selects and 2GB addressable space
+    <li> Secure digital host controller supports SD, SDIO, MMC or CE-ATA cards for in-application software upgrades, media files or adding Wi-Fi support
+    <li> NAND flash controller supports up to 32-bit ECC current and future NAND types. ECC management handled in hardware, minimizing software overhead
+    <li> DRAM controller supports connection of DDR, DDR2 and low-power DDR memories. Max. frequency (clock/data) 125/250 MHz
+    </ul>
+
+</ul>
+  
+
+
+
+</div>
+
+</div>
+  <div class="padMe5"></div>
+  <div class="padMe5"></div>
+
+
+
+
+</body>
+</html>		
