@@ -12,11 +12,12 @@
 #ifndef _ipconfig_h_
 #define _ipconfig_h_
 
+extern void initialize_networking(void);
+
 #define DEMOCFG_ENABLE_RTCS            1   /* enable RTCS operation */
 #define DEMOCFG_ENABLE_WEBSERVER       1   /* enable web server */
 #define DEMOCFG_ENABLE_DHCP            0   /* enable DHCP Client */
 
-extern void initialize_networking(void);
 #ifndef ENET_IPADDR
     #define ENET_IPADDR  IPADDR(192,168,0,100)
 #endif
@@ -32,4 +33,5 @@ extern void initialize_networking(void);
 #ifndef DEMOCFG_DEFAULT_DEVICE
    #define DEMOCFG_DEFAULT_DEVICE   BSP_DEFAULT_ENET_DEVICE
 #endif
+
 #endif

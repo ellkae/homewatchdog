@@ -19,12 +19,12 @@
 *
 **************************************************************************
 *
-* $FileName: demo.c$
-* $Version : 3.6.14.2$
-* $Date    : Sep-13-2010$
+* Fileame: sdcard.c
+* Modified by : T.J. Telan
+* Date : 18 May 2011
 *
-* Comments: Provide MFS file system on external SD card.
-*
+* Comments:
+
 *END************************************************************************/
 
 
