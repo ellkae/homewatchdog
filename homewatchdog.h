@@ -7,6 +7,9 @@
 #ifndef _homewatchdog_h_
 #define _homewatchdog_h_
 
-boolean InitializeIO(void);
+boolean initializeIO(void);
+void allOutputOn(void);
+void allOutputOff(void);
+void allOutputToggle(void);
 
 #endif
