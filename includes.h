@@ -15,7 +15,6 @@
 #include "ipconfig.h"
 
 #include <io_gpio.h>
-//#include "io_gpio_kgpio.h"
 
 #include "homewatchdog.h"
 
@@ -24,15 +23,15 @@
 #define ON      TRUE
 #define OFF     FALSE
 
-#define GPIO1           (GPIO_PORT_C | GPIO_PIN18)
-#define GPIO2           (GPIO_PORT_E | GPIO_PIN0)
-#define GPIO3           (GPIO_PORT_E | GPIO_PIN28)
-#define GPIO4           (GPIO_PORT_B | GPIO_PIN8)
-#define GPIO5           (GPIO_PORT_E | GPIO_PIN28) // SD card is uses this port...
-#define GPIO6           (GPIO_PORT_B | GPIO_PIN9)
-#define GPIO7           (GPIO_PORT_E | GPIO_PIN27)
-#define GPIO8           (GPIO_PORT_E | GPIO_PIN5)
-#define GPIO9           (GPIO_PORT_C | GPIO_PIN19)
+#define GPIO1           (GPIO_PORT_C | GPIO_PIN0)
+#define GPIO2           (GPIO_PORT_C | GPIO_PIN1)
+#define GPIO3           (GPIO_PORT_C | GPIO_PIN2)
+#define GPIO4           (GPIO_PORT_C | GPIO_PIN3)
+#define GPIO5           (GPIO_PORT_C | GPIO_PIN4)
+#define GPIO6           (GPIO_PORT_C | GPIO_PIN5)
+#define GPIO7           (GPIO_PORT_C | GPIO_PIN6)
+#define GPIO8           (GPIO_PORT_C | GPIO_PIN7)
+#define GPIO9           (GPIO_PORT_C | GPIO_PIN8)
 #define BSP_LED1        (GPIO_PORT_A | GPIO_PIN11)
 #define BSP_LED2        (GPIO_PORT_A | GPIO_PIN28)
 #define BSP_LED3        (GPIO_PORT_A | GPIO_PIN29)
