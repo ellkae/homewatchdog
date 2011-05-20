@@ -6,10 +6,18 @@
 
 #include "includes.h"
 
-boolean InitializeIO(void){
-
+boolean initializeIO(void){
     return 0;
-    
+}
 
-    
+void allOutputOn(void){
+    return;
+}
+
+void allOutputOff(void){
+    return;
+}
+
+void allOutputToggle(void){
+    return;
 }
