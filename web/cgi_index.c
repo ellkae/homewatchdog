@@ -67,50 +67,83 @@ static int cgi_rtc_data(HTTPD_SESSION_STRUCT *session) {
 }
 
 int cgi_toggle_gpio1(HTTPD_SESSION_STRUCT *session){
+    setOutput(GPIO1,!getOutput(GPIO1));
     return session->request.content_len;
 }
 
 int cgi_toggle_gpio2(HTTPD_SESSION_STRUCT *session){
+    setOutput(GPIO2,!getOutput(GPIO2));
     return session->request.content_len;
 }
 
 int cgi_toggle_gpio3(HTTPD_SESSION_STRUCT *session){
+    setOutput(GPIO3,!getOutput(GPIO3));
     return session->request.content_len;
 }
 
 int cgi_toggle_gpio4(HTTPD_SESSION_STRUCT *session){
+    setOutput(GPIO4,!getOutput(GPIO4));
     return session->request.content_len;
 }
 
 int cgi_toggle_gpio5(HTTPD_SESSION_STRUCT *session){
+    setOutput(GPIO5,!getOutput(GPIO5));
     return session->request.content_len;
 }
 
 int cgi_toggle_gpio6(HTTPD_SESSION_STRUCT *session){
+    setOutput(GPIO6,!getOutput(GPIO6));
     return session->request.content_len;
 }
 
 int cgi_toggle_gpio7(HTTPD_SESSION_STRUCT *session){
+    setOutput(GPIO7,!getOutput(GPIO7));
     return session->request.content_len;
 }
 
 int cgi_toggle_gpio8(HTTPD_SESSION_STRUCT *session){
+    setOutput(GPIO8,!getOutput(GPIO8));
     return session->request.content_len;
 }
 
 int cgi_toggle_gpio9(HTTPD_SESSION_STRUCT *session){
+    setOutput(GPIO9,!getOutput(GPIO9));
+    return session->request.content_len;
+}
+
+
+int cgi_toggle_led1(HTTPD_SESSION_STRUCT *session) {
+    setOutput(LED1,!getOutput(LED1));
+    return session->request.content_len;
+}
+
+int cgi_toggle_led2(HTTPD_SESSION_STRUCT *session){
+    setOutput(LED2,!getOutput(LED2));
+    return session->request.content_len;
+}
+
+int cgi_toggle_led3(HTTPD_SESSION_STRUCT *session){
+    setOutput(LED3,!getOutput(LED3));
+    return session->request.content_len;
+}
+
+int cgi_toggle_led4(HTTPD_SESSION_STRUCT *session){
+    setOutput(LED4,!getOutput(LED4));
     return session->request.content_len;
 }
 
 int cgi_toggle_all(HTTPD_SESSION_STRUCT *session){
+    allOutputToggle();
     return session->request.content_len;
 }
 
 int cgi_allOn(HTTPD_SESSION_STRUCT *session){
+    allOutputOn();
     return session->request.content_len;
 }
 
 int cgi_allOff(HTTPD_SESSION_STRUCT *session){
+    allOutputOff();
     return session->request.content_len;
 }
 
