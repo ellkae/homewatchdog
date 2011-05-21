@@ -16,5 +16,8 @@ int cgi_toggle_gpio6(HTTPD_SESSION_STRUCT *session);
 int cgi_toggle_gpio7(HTTPD_SESSION_STRUCT *session);
 int cgi_toggle_gpio8(HTTPD_SESSION_STRUCT *session);
 int cgi_toggle_gpio9(HTTPD_SESSION_STRUCT *session);
+int cgi_toggle_all(HTTPD_SESSION_STRUCT *session);
+int cgi_allOn(HTTPD_SESSION_STRUCT *session);
+int cgi_allOff(HTTPD_SESSION_STRUCT *session);
 
 #endif
