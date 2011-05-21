@@ -7,6 +7,9 @@
 #ifndef _homewatchdog_h_
 #define _homewatchdog_h_
 
+
+static FILE_PTR output_port=NULL;
+
 boolean initializeIO(void);
 void allOutputOn(void);
 void allOutputOff(void);
