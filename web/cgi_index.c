@@ -35,6 +35,10 @@ const HTTPD_CGI_LINK_STRUCT cgi_lnk_tbl[] = {
     { "togglegpio7",    cgi_toggle_gpio7},
     { "togglegpio8",    cgi_toggle_gpio8},
     { "togglegpio9",    cgi_toggle_gpio9},
+    { "toggleled1",     cgi_toggle_led1},
+    { "toggleled2",     cgi_toggle_led2},
+    { "toggleled3",     cgi_toggle_led3},
+    { "toggleled4",     cgi_toggle_led4},
     { "invert",         cgi_toggle_all},    
     { "allon",          cgi_allOn},
     { "alloff",         cgi_allOff},
@@ -67,82 +71,97 @@ static int cgi_rtc_data(HTTPD_SESSION_STRUCT *session) {
 }
 
 int cgi_toggle_gpio1(HTTPD_SESSION_STRUCT *session){
+    printf("DEBUG: Toggle gpio1\n");
     setOutput(GPIO1,!getOutput(GPIO1));
     return session->request.content_len;
 }
 
 int cgi_toggle_gpio2(HTTPD_SESSION_STRUCT *session){
+    printf("DEBUG: Toggle gpio2\n");
     setOutput(GPIO2,!getOutput(GPIO2));
     return session->request.content_len;
 }
 
 int cgi_toggle_gpio3(HTTPD_SESSION_STRUCT *session){
+    printf("DEBUG: Toggle gpio3\n");
     setOutput(GPIO3,!getOutput(GPIO3));
     return session->request.content_len;
 }
 
 int cgi_toggle_gpio4(HTTPD_SESSION_STRUCT *session){
+    printf("DEBUG: Toggle gpio4\n");
     setOutput(GPIO4,!getOutput(GPIO4));
     return session->request.content_len;
 }
 
 int cgi_toggle_gpio5(HTTPD_SESSION_STRUCT *session){
+    printf("DEBUG: Toggle gpio5\n");
     setOutput(GPIO5,!getOutput(GPIO5));
     return session->request.content_len;
 }
 
 int cgi_toggle_gpio6(HTTPD_SESSION_STRUCT *session){
+    printf("DEBUG: Toggle gpio6\n");
     setOutput(GPIO6,!getOutput(GPIO6));
     return session->request.content_len;
 }
 
 int cgi_toggle_gpio7(HTTPD_SESSION_STRUCT *session){
+    printf("DEBUG: Toggle gpio7\n");
     setOutput(GPIO7,!getOutput(GPIO7));
     return session->request.content_len;
 }
 
 int cgi_toggle_gpio8(HTTPD_SESSION_STRUCT *session){
+    printf("DEBUG: Toggle gpio8\n");
     setOutput(GPIO8,!getOutput(GPIO8));
     return session->request.content_len;
 }
 
 int cgi_toggle_gpio9(HTTPD_SESSION_STRUCT *session){
+    printf("DEBUG: Toggle gpio9\n");
     setOutput(GPIO9,!getOutput(GPIO9));
     return session->request.content_len;
 }
 
-
 int cgi_toggle_led1(HTTPD_SESSION_STRUCT *session) {
+    printf("DEBUG: Toggle led1\n");
     setOutput(LED1,!getOutput(LED1));
     return session->request.content_len;
 }
 
 int cgi_toggle_led2(HTTPD_SESSION_STRUCT *session){
+    printf("DEBUG: Toggle led2\n");
     setOutput(LED2,!getOutput(LED2));
     return session->request.content_len;
 }
 
 int cgi_toggle_led3(HTTPD_SESSION_STRUCT *session){
+    printf("DEBUG: Toggle led3\n");
     setOutput(LED3,!getOutput(LED3));
     return session->request.content_len;
 }
 
 int cgi_toggle_led4(HTTPD_SESSION_STRUCT *session){
+    printf("DEBUG: Toggle led4\n");
     setOutput(LED4,!getOutput(LED4));
     return session->request.content_len;
 }
 
 int cgi_toggle_all(HTTPD_SESSION_STRUCT *session){
+    printf("DEBUG: Toggle all\n");
     allOutputToggle();
     return session->request.content_len;
 }
 
 int cgi_allOn(HTTPD_SESSION_STRUCT *session){
+    printf("DEBUG: All ON\n");
     allOutputOn();
     return session->request.content_len;
 }
 
 int cgi_allOff(HTTPD_SESSION_STRUCT *session){
+    printf("DEBUG: All OFF\n");
     allOutputOff();
     return session->request.content_len;
 }

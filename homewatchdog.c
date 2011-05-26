@@ -27,20 +27,20 @@ boolean initializeIO(void){
 
     /* GPIO array definition   */
     const uint_32 output_set[] = {
-        USR_GPIO1 | GPIO_PIN_STATUS_1,
-        USR_GPIO2 | GPIO_PIN_STATUS_1,
-        USR_GPIO3 | GPIO_PIN_STATUS_1,
-        USR_GPIO4 | GPIO_PIN_STATUS_1,
-        USR_GPIO5 | GPIO_PIN_STATUS_1,
-        USR_GPIO6 | GPIO_PIN_STATUS_1,
-        USR_GPIO7 | GPIO_PIN_STATUS_1,
-        USR_GPIO8 | GPIO_PIN_STATUS_1,
-        USR_GPIO9 | GPIO_PIN_STATUS_1,
+        USR_GPIO1 | GPIO_PIN_STATUS_0,
+        USR_GPIO2 | GPIO_PIN_STATUS_0,
+        USR_GPIO3 | GPIO_PIN_STATUS_0,
+        USR_GPIO4 | GPIO_PIN_STATUS_0,
+        USR_GPIO5 | GPIO_PIN_STATUS_0,
+        USR_GPIO6 | GPIO_PIN_STATUS_0,
+        USR_GPIO7 | GPIO_PIN_STATUS_0,
+        USR_GPIO8 | GPIO_PIN_STATUS_0,
+        USR_GPIO9 | GPIO_PIN_STATUS_0,
       
-        BSP_LED1 | GPIO_PIN_STATUS_0,
-        BSP_LED2 | GPIO_PIN_STATUS_0,
-        BSP_LED3 | GPIO_PIN_STATUS_0,
-        BSP_LED4 | GPIO_PIN_STATUS_0,
+        BSP_LED1 | GPIO_PIN_STATUS_1,
+        BSP_LED2 | GPIO_PIN_STATUS_1,
+        BSP_LED3 | GPIO_PIN_STATUS_1,
+        BSP_LED4 | GPIO_PIN_STATUS_1,
         GPIO_LIST_END
     };
   
