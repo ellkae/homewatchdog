@@ -31,7 +31,7 @@
 *END************************************************************************/
 
 #include "httpd_types.h"
-#include "ipconfig.h"
+#include "ifconfig.h"
 #include  <ipcfg.h>
 
 

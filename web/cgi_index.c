@@ -4,7 +4,7 @@
 * Date : 19 May 2011
 *****************************************************************************/
 
-#include "ipconfig.h"
+#include "ifconfig.h"
 
 extern MQX_FILE_PTR output_port;
 

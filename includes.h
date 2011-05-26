@@ -12,7 +12,7 @@
 #include <fio.h>
 
 #include <rtcs.h>
-#include "ipconfig.h"
+#include "ifconfig.h"
 
 #include <io_gpio.h>
 
