@@ -9,7 +9,6 @@
 extern MQX_FILE_PTR output_port;
 
 #if DEMOCFG_ENABLE_WEBSERVER
-#include "html.h"
 #include "cgi.h"
 
 #include <string.h>
