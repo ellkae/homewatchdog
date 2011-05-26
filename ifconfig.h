@@ -1,5 +1,5 @@
 /*****************************************************************************
-* Filename : ipconfig.h
+* Filename : ifconfig.h
 * Author : T.J. Telan
 * Date : 10 May 2011
 *****************************************************************************/
@@ -9,8 +9,8 @@
 #include <rtcs.h>
 #include "httpd.h"
 
-#ifndef _ipconfig_h_
-#define _ipconfig_h_
+#ifndef _ifconfig_h_
+#define _ifconfig_h_
 
 extern void initialize_networking(void);
 
