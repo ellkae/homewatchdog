@@ -6,7 +6,7 @@
 
 #include "includes.h"
 
-boolean output_state[MAX_OUTPUTS];
+boolean output_state[MAX_OUTPUTS]={OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,ON,ON,ON,ON};
 
 boolean initializeIO(void){
 
@@ -48,9 +48,9 @@ boolean initializeIO(void){
     output_port = fopen("gpio:write", (char_ptr) &output_set);
   
     // Test GPIO by turning on all ports
-    if (output_port){
-        ioctl(output_port, GPIO_IOCTL_WRITE_LOG1, &output_port);
-    }
+//    if (output_port){
+//        ioctl(output_port, GPIO_IOCTL_WRITE_LOG1, &output_port);
+//    }
     
     return (output_port!=NULL);
 }
@@ -117,31 +117,31 @@ void setOutput(GPIO_t signal, boolean state){
         //Set LED on or off based on the state passed to function
         switch (signal) {
         case GPIO1:
-            ioctl(output_port, (state) ? GPIO_IOCTL_WRITE_LOG0 : GPIO_IOCTL_WRITE_LOG1, (pointer) &gpio1);
+            ioctl(output_port, (state) ? GPIO_IOCTL_WRITE_LOG1 : GPIO_IOCTL_WRITE_LOG0, (pointer) &gpio1);
             break;
         case GPIO2:
-            ioctl(output_port, (state) ? GPIO_IOCTL_WRITE_LOG0 : GPIO_IOCTL_WRITE_LOG1, (pointer) &gpio2);
+            ioctl(output_port, (state) ? GPIO_IOCTL_WRITE_LOG1 : GPIO_IOCTL_WRITE_LOG0, (pointer) &gpio2);
             break;
         case GPIO3:
-            ioctl(output_port, (state) ? GPIO_IOCTL_WRITE_LOG0 : GPIO_IOCTL_WRITE_LOG1, (pointer) &gpio3);
+            ioctl(output_port, (state) ? GPIO_IOCTL_WRITE_LOG1 : GPIO_IOCTL_WRITE_LOG0, (pointer) &gpio3);
             break;
         case GPIO4:
-            ioctl(output_port, (state) ? GPIO_IOCTL_WRITE_LOG0 : GPIO_IOCTL_WRITE_LOG1, (pointer) &gpio4);
+            ioctl(output_port, (state) ? GPIO_IOCTL_WRITE_LOG1 : GPIO_IOCTL_WRITE_LOG0, (pointer) &gpio4);
             break;
         case GPIO5:
-            ioctl(output_port, (state) ? GPIO_IOCTL_WRITE_LOG0 : GPIO_IOCTL_WRITE_LOG1, (pointer) &gpio5);
+            ioctl(output_port, (state) ? GPIO_IOCTL_WRITE_LOG1 : GPIO_IOCTL_WRITE_LOG0, (pointer) &gpio5);
             break;
         case GPIO6:
-            ioctl(output_port, (state) ? GPIO_IOCTL_WRITE_LOG0 : GPIO_IOCTL_WRITE_LOG1, (pointer) &gpio6);
+            ioctl(output_port, (state) ? GPIO_IOCTL_WRITE_LOG1 : GPIO_IOCTL_WRITE_LOG0, (pointer) &gpio6);
             break;
         case GPIO7:
-            ioctl(output_port, (state) ? GPIO_IOCTL_WRITE_LOG0 : GPIO_IOCTL_WRITE_LOG1, (pointer) &gpio7);
+            ioctl(output_port, (state) ? GPIO_IOCTL_WRITE_LOG1 : GPIO_IOCTL_WRITE_LOG0, (pointer) &gpio7);
             break;
         case GPIO8:
-            ioctl(output_port, (state) ? GPIO_IOCTL_WRITE_LOG0 : GPIO_IOCTL_WRITE_LOG1, (pointer) &gpio8);
+            ioctl(output_port, (state) ? GPIO_IOCTL_WRITE_LOG1 : GPIO_IOCTL_WRITE_LOG0, (pointer) &gpio8);
             break;
         case GPIO9:
-            ioctl(output_port, (state) ? GPIO_IOCTL_WRITE_LOG0 : GPIO_IOCTL_WRITE_LOG1, (pointer) &gpio9);
+            ioctl(output_port, (state) ? GPIO_IOCTL_WRITE_LOG1 : GPIO_IOCTL_WRITE_LOG0, (pointer) &gpio9);
             break;
         case LED1:
             ioctl(output_port, (state) ? GPIO_IOCTL_WRITE_LOG0 : GPIO_IOCTL_WRITE_LOG1, (pointer) &led1);

@@ -70,79 +70,183 @@ static int cgi_rtc_data(HTTPD_SESSION_STRUCT *session) {
 }
 
 int cgi_toggle_gpio1(HTTPD_SESSION_STRUCT *session){
-    printf("DEBUG: Toggle gpio1\n");
+    printf("DEBUG: Toggle gpio1 ");
+    
+    if(getOutput(GPIO1)){
+        printf("OFF!\n");
+    }
+    else{
+        printf("ON!\n");
+    }
+    
     setOutput(GPIO1,!getOutput(GPIO1));
+    
     return session->request.content_len;
 }
 
 int cgi_toggle_gpio2(HTTPD_SESSION_STRUCT *session){
-    printf("DEBUG: Toggle gpio2\n");
+    printf("DEBUG: Toggle gpio2 ");
+    
+    if(getOutput(GPIO2)){
+        printf("OFF!\n");
+    }
+    else{
+        printf("ON!\n");
+    }
     setOutput(GPIO2,!getOutput(GPIO2));
     return session->request.content_len;
 }
 
 int cgi_toggle_gpio3(HTTPD_SESSION_STRUCT *session){
-    printf("DEBUG: Toggle gpio3\n");
+    printf("DEBUG: Toggle gpio3 ");
+    
+    if(getOutput(GPIO3)){
+        printf("OFF!\n");
+    }
+    else{
+        printf("ON!\n");
+    }
+    
     setOutput(GPIO3,!getOutput(GPIO3));
     return session->request.content_len;
 }
 
 int cgi_toggle_gpio4(HTTPD_SESSION_STRUCT *session){
-    printf("DEBUG: Toggle gpio4\n");
+    printf("DEBUG: Toggle gpio4 ");
+    
+    if(getOutput(GPIO4)){
+        printf("OFF!\n");
+    }
+    else{
+        printf("ON!\n");
+    }
+    
     setOutput(GPIO4,!getOutput(GPIO4));
     return session->request.content_len;
 }
 
 int cgi_toggle_gpio5(HTTPD_SESSION_STRUCT *session){
-    printf("DEBUG: Toggle gpio5\n");
+    printf("DEBUG: Toggle gpio5 ");
+    
+    if(getOutput(GPIO5)){
+        printf("OFF!\n");
+    }
+    else{
+        printf("ON!\n");
+    }
+    
     setOutput(GPIO5,!getOutput(GPIO5));
     return session->request.content_len;
 }
 
 int cgi_toggle_gpio6(HTTPD_SESSION_STRUCT *session){
-    printf("DEBUG: Toggle gpio6\n");
+    printf("DEBUG: Toggle gpio6 ");
+    
+    if(getOutput(GPIO6)){
+        printf("OFF!\n");
+    }
+    else{
+        printf("ON!\n");
+    }
+    
     setOutput(GPIO6,!getOutput(GPIO6));
     return session->request.content_len;
 }
 
 int cgi_toggle_gpio7(HTTPD_SESSION_STRUCT *session){
-    printf("DEBUG: Toggle gpio7\n");
+    printf("DEBUG: Toggle gpio7 ");
+    
+    if(getOutput(GPIO7)){
+        printf("OFF!\n");
+    }
+    else{
+        printf("ON!\n");
+    }
+    
     setOutput(GPIO7,!getOutput(GPIO7));
     return session->request.content_len;
 }
 
 int cgi_toggle_gpio8(HTTPD_SESSION_STRUCT *session){
-    printf("DEBUG: Toggle gpio8\n");
+    printf("DEBUG: Toggle gpio8 ");
+    
+    if(getOutput(GPIO8)){
+        printf("OFF!\n");
+    }
+    else{
+        printf("ON!\n");
+    }
+    
     setOutput(GPIO8,!getOutput(GPIO8));
     return session->request.content_len;
 }
 
 int cgi_toggle_gpio9(HTTPD_SESSION_STRUCT *session){
-    printf("DEBUG: Toggle gpio9\n");
+    printf("DEBUG: Toggle gpio9 ");
+    
+    if(getOutput(GPIO9)){
+        printf("OFF!\n");
+    }
+    else{
+        printf("ON!\n");
+    }
+    
     setOutput(GPIO9,!getOutput(GPIO9));
     return session->request.content_len;
 }
 
 int cgi_toggle_led1(HTTPD_SESSION_STRUCT *session) {
-    printf("DEBUG: Toggle led1\n");
+    printf("DEBUG: Toggle led1 ");
+    
+    if(getOutput(LED1)){
+        printf("OFF!\n");
+    }
+    else{
+        printf("ON!\n");
+    }
+    
     setOutput(LED1,!getOutput(LED1));
     return session->request.content_len;
 }
 
 int cgi_toggle_led2(HTTPD_SESSION_STRUCT *session){
-    printf("DEBUG: Toggle led2\n");
+    printf("DEBUG: Toggle led2 ");
+    
+    if(getOutput(LED2)){
+        printf("OFF!\n");
+    }
+    else{
+        printf("ON!\n");
+    }
+    
     setOutput(LED2,!getOutput(LED2));
     return session->request.content_len;
 }
 
 int cgi_toggle_led3(HTTPD_SESSION_STRUCT *session){
-    printf("DEBUG: Toggle led3\n");
+    printf("DEBUG: Toggle led3 ");
+    
+    if(getOutput(LED3)){
+        printf("OFF!\n");
+    }
+    else{
+        printf("ON!\n");
+    }
+    
     setOutput(LED3,!getOutput(LED3));
     return session->request.content_len;
 }
 
 int cgi_toggle_led4(HTTPD_SESSION_STRUCT *session){
-    printf("DEBUG: Toggle led4\n");
+    printf("DEBUG: Toggle led4 ");
+    
+    if(getOutput(LED4)){
+        printf("OFF!\n");
+    }
+    else{
+        printf("ON!\n");
+    }
+    
     setOutput(LED4,!getOutput(LED4));
     return session->request.content_len;
 }
