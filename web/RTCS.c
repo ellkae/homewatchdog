@@ -96,7 +96,10 @@ void initialize_networking(void)
         extern const HTTPD_CGI_LINK_STRUCT cgi_lnk_tbl[];
         extern const HTTPD_FN_LINK_STRUCT fn_lnk_tbl[];
 
-        server = httpd_server_init((HTTPD_ROOT_DIR_STRUCT*)root_dir, "index.html");
+        /* Change pathname to point root to different file
+        ex. IP address is 192.168.0.100 & file is index.html
+        Browsing to http://192.168.0.100 will automatically go to index.html*/
+        server = httpd_server_init((HTTPD_ROOT_DIR_STRUCT*)root_dir, "about.html");
         HTTPD_SET_PARAM_CGI_TBL(server, (HTTPD_CGI_LINK_STRUCT*)cgi_lnk_tbl);
         HTTPD_SET_PARAM_FN_TBL(server, (HTTPD_FN_LINK_STRUCT*)fn_lnk_tbl);
 
