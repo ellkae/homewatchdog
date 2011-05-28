@@ -1,6 +1,6 @@
-var currentHours=1;
-var currentMinutes=0;
-var currentSeconds=0;
+var currentHours;
+var currentMinutes;
+var currentSeconds;
 
 var data_value      = new Array(3);
 var time_received   = 0;
@@ -95,10 +95,13 @@ function syncClock(data) {
     data_value[1]   = parsed[1];
     data_value[2]   = parsed[2];
 
-    currentHours    = data_value[0];
-    currentMinutes  = data_value[1];
-    currentSeconds  = data_value[2];
+    // Use parseInt to avoid next second tick from 
+    // contatenating string instead of adding to an integer
+    currentHours    = parseInt(data_value[0],10);
+    currentMinutes  = parseInt(data_value[1],10);
+    currentSeconds  = parseInt(data_value[2],10);
 
+//    alert(currentHours + " " +  currentMinutes + " " + currentSeconds);
 }
 
 
