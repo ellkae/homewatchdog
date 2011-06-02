@@ -24,8 +24,6 @@ typedef enum {
     MAX_OUTPUTS
 } GPIO_t;
 
-static FILE_PTR output_port=NULL;
-
 boolean initializeIO(void);
 void setOutput(GPIO_t, boolean);
 boolean getOutput(GPIO_t);

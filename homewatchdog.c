@@ -6,6 +6,8 @@
 
 #include "includes.h"
 
+static FILE_PTR output_port=NULL;
+
 boolean output_state[MAX_OUTPUTS]={OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,ON,ON,ON,ON};
 
 boolean initializeIO(void){
@@ -48,9 +50,9 @@ boolean initializeIO(void){
     output_port = fopen("gpio:write", (char_ptr) &output_set);
   
     // Test GPIO by turning on all ports
-//    if (output_port){
-//        ioctl(output_port, GPIO_IOCTL_WRITE_LOG1, &output_port);
-//    }
+    if (output_port){
+        ioctl(output_port, GPIO_IOCTL_WRITE_LOG1, &output_port);
+    }
     
     return (output_port!=NULL);
 }

@@ -10,8 +10,15 @@
 
 
 const SHELL_COMMAND_STRUCT shell_commands[] = {
-    { NULL,        NULL }
+    { "settime",    Shell_set_time },
+    { "exit",       Shell_exit },
+//    { "gpio",       shell_toggle_gpio},
+//    { "led",        shell_toggle_led},
+//    { "all",        shell_toggle_all},
+    { "?",          Shell_command_list },
+    { NULL,         NULL }
 };
+
 
 
 /*TASK*-----------------------------------------------------------------
