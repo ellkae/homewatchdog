@@ -27,6 +27,18 @@ int cgi_toggle_all(HTTPD_SESSION_STRUCT *session);
 int cgi_allOn(HTTPD_SESSION_STRUCT *session);
 int cgi_allOff(HTTPD_SESSION_STRUCT *session);
 
+// For demo
+int cgi_all_led_on(HTTPD_SESSION_STRUCT *session);
+int cgi_all_led_off(HTTPD_SESSION_STRUCT *session);
+int cgi_invert_led(HTTPD_SESSION_STRUCT *session);
+
+int cgi_all_light_on(HTTPD_SESSION_STRUCT *session);
+int cgi_all_light_off(HTTPD_SESSION_STRUCT *session);
+int cgi_invert_light(HTTPD_SESSION_STRUCT *session);
+
+int cgi_all_lock(HTTPD_SESSION_STRUCT *session);
+int cgi_all_unlock(HTTPD_SESSION_STRUCT *session);
+
 #define CGI_SEND_NUM(val)                   \
 {                                           \
         char str[20], *pstr;                \

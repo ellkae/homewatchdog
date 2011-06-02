@@ -4,6 +4,7 @@
 * Date : 19 May 2011
 *****************************************************************************/
 
+#include "includes.h"
 #include "ifconfig.h"
 
 extern MQX_FILE_PTR output_port;
@@ -41,6 +42,20 @@ const HTTPD_CGI_LINK_STRUCT cgi_lnk_tbl[] = {
     { "invert",         cgi_toggle_all},    
     { "allon",          cgi_allOn},
     { "alloff",         cgi_allOff},
+    
+    // Demo related
+    { "all_led_on",     cgi_all_led_on},
+    { "all_led_off",    cgi_all_led_off},
+    { "invert_led",     cgi_invert_led},
+    
+    { "all_light_on",   cgi_all_light_on},
+    { "all_light_off",  cgi_all_light_off},
+    { "invert_light",   cgi_invert_light},
+    
+    { "all_lock_on",    cgi_all_lock},
+    { "all_lock_off",   cgi_all_unlock},
+
+
     { 0, 0 }    // DO NOT REMOVE - last item - end of table
 };
 
@@ -269,4 +284,84 @@ int cgi_allOff(HTTPD_SESSION_STRUCT *session){
     return session->request.content_len;
 }
 
+int cgi_all_led_on(HTTPD_SESSION_STRUCT *session){
+    setOutput(LED1,ON);
+    setOutput(LED2,ON);
+    setOutput(LED3,ON);
+    setOutput(LED4,ON);
+    return session->request.content_len;
+}
+
+int cgi_all_led_off(HTTPD_SESSION_STRUCT *session){
+    setOutput(LED1,OFF);
+    setOutput(LED2,OFF);
+    setOutput(LED3,OFF);
+    setOutput(LED4,OFF);
+    return session->request.content_len;
+}
+
+int cgi_invert_led(HTTPD_SESSION_STRUCT *session){
+
+    // Quick and dirty version...
+    int i;
+    for(i=LED1; i < MAX_OUTPUTS; i++){
+        if(getOutput((GPIO_t)i)){
+            setOutput((GPIO_t)i,OFF);
+        }
+        else {
+            setOutput((GPIO_t)i,ON);
+        }
+    }
+    return session->request.content_len;
+}
+
+int cgi_all_light_on(HTTPD_SESSION_STRUCT *session){
+    setOutput(GPIO1,ON);
+    setOutput(GPIO5,ON);
+    setOutput(GPIO6,ON);
+    return session->request.content_len;
+}
+int cgi_all_light_off(HTTPD_SESSION_STRUCT *session){
+    setOutput(GPIO1,OFF);
+    setOutput(GPIO5,OFF);
+    setOutput(GPIO6,OFF);
+    return session->request.content_len;
+}
+
+int cgi_invert_light(HTTPD_SESSION_STRUCT *session){
+    // quick and dirty...
+    if(getOutput(GPIO1)){
+        setOutput(GPIO1,OFF);
+    }
+    else {
+        setOutput(GPIO1,ON);
+    }
+    
+    if(getOutput(GPIO5)){
+        setOutput(GPIO5,OFF);
+    }
+    else {
+        setOutput(GPIO5,ON);
+    }
+    
+    if(getOutput(GPIO6)){
+        setOutput(GPIO6,OFF);
+    }
+    else {
+        setOutput(GPIO6,ON);
+    }
+    return session->request.content_len;
+}
+
+int cgi_all_lock(HTTPD_SESSION_STRUCT *session){
+    setOutput(GPIO2,ON);
+    setOutput(GPIO3,ON);
+    return session->request.content_len;
+}
+
+int cgi_all_unlock(HTTPD_SESSION_STRUCT *session){
+    setOutput(GPIO2,OFF);
+    setOutput(GPIO3,OFF);
+    return session->request.content_len;
+}
 #endif

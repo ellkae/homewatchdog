@@ -38,9 +38,9 @@
                   <a href="about.html" shape="rect">About</a>
                 </li>
                 <li>
-                  <div id="hour"><h1>0</h1></div>
-                  <div id="minute"><h1>0</h1></div>
-                  <div id="second"><h1>0</h1></div>
+                  <div id="hour"></div>
+                  <div id="minute"></div>
+                  <div id="second"></div>
                 </li>
               </ul> 
             </div> 
@@ -52,22 +52,53 @@
         <!--  content -->  
 <p></p>
 
-<input type="button" onclick="toggle_led1()" value="Toggle LED1" /><br />
-<input type="button" onclick="toggle_led2()" value="Toggle LED2" /><br />
-<input type="button" onclick="toggle_led3()" value="Toggle LED3" /><br />
+<h1>Demo</h1>
+<p>
+    <h2>On-board LEDs</h2>
+<input type="button" onclick="toggle_led1()" value="Toggle LED1" />
+<input type="button" onclick="toggle_led2()" value="Toggle LED2" />
+<input type="button" onclick="toggle_led3()" value="Toggle LED3" />
 <input type="button" onclick="toggle_led4()" value="Toggle LED4" /><br />
-<input type="button" onclick="toggle_gpio1()" value="Toggle GPIO1" /><br />
-<input type="button" onclick="toggle_gpio2()" value="Toggle GPIO2" /><br />
-<input type="button" onclick="toggle_gpio3()" value="Toggle GPIO3" /><br />
-<input type="button" onclick="toggle_gpio4()" value="Toggle GPIO4" /><br />
-<input type="button" onclick="toggle_gpio5()" value="Toggle GPIO5" /><br />
-<input type="button" onclick="toggle_gpio6()" value="Toggle GPIO6" /><br />
-<input type="button" onclick="toggle_gpio7()" value="Toggle GPIO7" /><br />
-<input type="button" onclick="toggle_gpio8()" value="Toggle GPIO8" /><br />
-<input type="button" onclick="toggle_gpio9()" value="Toggle GPIO9" /><br />
-<input type="button" onclick="allOn()" value="All ON" /><br />
-<input type="button" onclick="allOff()" value="All OFF" /><br />
-<input type="button" onclick="invert()" value="Invert" /><br />
+<input type="button" onclick="all_led_on()" value="All LED ON" />
+<input type="button" onclick="all_led_off()" value="All LED OFF" />
+<input type="button" onclick="invert_led()" value="Invert LED" />
+
+
+
+    <h2>Scale Model</h2>
+    <p>
+        <h3>Lights</h3>
+        <p>
+            <input type="button" onclick="toggle_gpio1()" value="Door Light" />
+            <input type="button" onclick="toggle_gpio5()" value="Reading Lamp" />
+            <input type="button" onclick="toggle_gpio6()" value="Desk Lamp" /><br />
+            <input type="button" onclick="all_light_on()" value="All Lights ON" />
+            <input type="button" onclick="all_light_off()" value="All Lights OFF" />
+            <input type="button" onclick="invert_light()" value="Invert Lights" />
+        </p>
+        <h3>Security</h3>
+        <p>
+            <input type="button" onclick="toggle_gpio2()" value="Door Lock" />
+            <input type="button" onclick="toggle_gpio3()" value="Window Lock" /><br />
+            <input type="button" onclick="all_lock_on()" value="Lock ALL" />
+            <input type="button" onclick="all_lock_off()" value="Unlock ALL" />
+
+        </p>
+
+    </p>
+
+    <h3>Demonstration purposes only</h3>
+    <p>
+        <input type="button" onclick="allOn()" value="All ON" />
+        <input type="button" onclick="allOff()" value="All OFF" />
+        <input type="button" onclick="invert()" value="Invert" />
+    </p>
+<!-- Unused Inputs -->
+<!-- <input type="button" onclick="toggle_gpio4()" value="Toggle GPIO4" /><br /> -->
+<!-- <input type="button" onclick="toggle_gpio7()" value="Toggle GPIO7" /><br /> -->
+<!-- <input type="button" onclick="toggle_gpio8()" value="Toggle GPIO8" /><br /> -->
+<!-- <input type="button" onclick="toggle_gpio9()" value="Toggle GPIO9" /><br /> -->
+</p>
         <!-- end content -->  
         <div class="clear" style="height:40px"></div> 
       </div>  

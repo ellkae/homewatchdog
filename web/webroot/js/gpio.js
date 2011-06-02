@@ -64,3 +64,34 @@ function allOff() {
     makeRequest("alloff.cgi");
 }
 
+function all_led_on() {
+    makeRequest("all_led_on.cgi");
+}
+
+function all_led_off() {
+    makeRequest("all_led_off.cgi");
+}
+
+function invert_led() {
+    makeRequest("invert_led.cgi");
+}
+
+function all_light_on() {
+    makeRequest("all_light_on.cgi");
+}
+
+function all_light_off() {
+    makeRequest("all_light_off.cgi");
+}
+
+function invert_light() {
+    makeRequest("invert_light.cgi");
+}
+
+function all_lock_on() {
+    makeRequest("all_lock.cgi");
+}
+
+function all_lock_off() {
+    makeRequest("all_unlock.cgi");
+}
