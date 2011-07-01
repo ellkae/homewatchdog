@@ -8,24 +8,12 @@
 
 static FILE_PTR output_port=NULL;
 
+/* Keep track of current state in software for now...*/
+/* Initial state - all off - LEDs are active low*/
 boolean output_state[MAX_OUTPUTS]={OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,ON,ON,ON,ON};
 
+/* Initialize the GPIO and demo board's LEDs */
 boolean initializeIO(void){
-
-/* Initialization for demo PWM */  
-//    FILE_PTR uart3_ptr;
-// 
-//    uart3_ptr = (pointer)fopen("ittyd:", (pointer) (IO_SERIAL_XON_XOFF));
-//    
-//    if(uart3_ptr == NULL) {
-//        printf("cannot open ittyd device \n");
-//    }
-//    else {
-//        printf("device opened succesfully \n"); 
-//        write(uart3_ptr,(pointer)"A",1);	// write 1 char to uart1 or uart2
-//		write(uart3_ptr,(pointer)"\n",1);	// write 1 char to uart1 or uart2
-//        fflush(stdout);
-//    }
 
     /* GPIO array definition   */
     const uint_32 output_set[] = {
@@ -38,27 +26,29 @@ boolean initializeIO(void){
         USR_GPIO7 | GPIO_PIN_STATUS_0,
         USR_GPIO8 | GPIO_PIN_STATUS_0,
         USR_GPIO9 | GPIO_PIN_STATUS_0,
-      
+
         BSP_LED1 | GPIO_PIN_STATUS_1,
         BSP_LED2 | GPIO_PIN_STATUS_1,
         BSP_LED3 | GPIO_PIN_STATUS_1,
         BSP_LED4 | GPIO_PIN_STATUS_1,
         GPIO_LIST_END
     };
-  
+
     // Set GPIO array as outputs
     output_port = fopen("gpio:write", (char_ptr) &output_set);
-  
+
     // Test GPIO by turning on all ports
     if (output_port){
         ioctl(output_port, GPIO_IOCTL_WRITE_LOG1, &output_port);
     }
-    
+
     return (output_port!=NULL);
 }
 
+/* Set state of individual ports */
 void setOutput(GPIO_t signal, boolean state){
-    //Set up GPIO structure for each LED + GPIO port
+
+    /* Set up GPIO structure for each LED + GPIO port */
     static const uint_32 gpio1[] = {
         USR_GPIO1,
         GPIO_LIST_END
@@ -94,7 +84,7 @@ void setOutput(GPIO_t signal, boolean state){
     static const uint_32 gpio9[] = {
         USR_GPIO9,
         GPIO_LIST_END
-    };    
+    };
     static const uint_32 led1[] = {
         BSP_LED1,
         GPIO_LIST_END
@@ -110,13 +100,15 @@ void setOutput(GPIO_t signal, boolean state){
     static const uint_32 led4[] = {
         BSP_LED4,
         GPIO_LIST_END
-    };  
-    //If the output device driver was successfully opened...
+    };
+
+    /* If the output device driver was successfully opened during init... */
     if (output_port) {
-        //Store state in variable
+
+        /* Update state in state table */
         output_state[signal] = state;
 
-        //Set LED on or off based on the state passed to function
+        /* Set LED on or off based on the signal passed to function */
         switch (signal) {
         case GPIO1:
             ioctl(output_port, (state) ? GPIO_IOCTL_WRITE_LOG1 : GPIO_IOCTL_WRITE_LOG0, (pointer) &gpio1);
@@ -157,11 +149,12 @@ void setOutput(GPIO_t signal, boolean state){
         case LED4:
             ioctl(output_port, (state) ? GPIO_IOCTL_WRITE_LOG0 : GPIO_IOCTL_WRITE_LOG1, (pointer) &led4);
             break;
-        }       
+        }
     }
-    return;  
+    return;
 }
 
+/* Return the state of requested port */
 boolean getOutput(GPIO_t signal){
     if(signal<MAX_OUTPUTS) {
         return output_state[signal];
@@ -172,6 +165,7 @@ boolean getOutput(GPIO_t signal){
 }
 
 
+/* Demo - Turn all ports on */
 void allOutputOn(void){
     setOutput(GPIO1,ON);
     setOutput(GPIO2,ON);
@@ -189,6 +183,7 @@ void allOutputOn(void){
     return;
 }
 
+/* Demo - Turn all ports off */
 void allOutputOff(void){
     setOutput(GPIO1,OFF);
     setOutput(GPIO2,OFF);
@@ -206,6 +201,7 @@ void allOutputOff(void){
     return;
 }
 
+/* Demo - Toggle the on/off state of all ports */
 void allOutputToggle(void){
     int i;
     for(i=0; i < MAX_OUTPUTS; i++){

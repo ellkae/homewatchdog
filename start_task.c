@@ -9,7 +9,7 @@
 
 /*----------------------------------------------------------------------------
 - Task Name : start_task
-- Comments :
+- Comments : Initialize system resources
 ----------------------------------------------------------------------------*/
 
 void start_task(uint_32 initial_data){
@@ -20,10 +20,10 @@ void start_task(uint_32 initial_data){
 
     /* Create sd card task */
     _task_create(0,SDCARD_TASK,0);
-  
+
     /* Create shell task */
     _task_create(0,SHELL_TASK,0);
-  
+
     /* Set up networking and web server */
     initialize_networking();
 

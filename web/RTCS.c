@@ -26,7 +26,7 @@
 * Modified by : T.J. Telan
 * Date : 18 May 2011
 *
-* Comments:
+* Comments: Change mount points for web server. Be careful. Can be confusing.
 
 *END************************************************************************/
 
@@ -36,12 +36,34 @@
 
 
 /* Define file structures to store HTML pages */
+
+/* Use:
+ * { "name of directory", "mount point" }
+ * The default point for the SDCard on the demo board is "a:"
+ * "" point refers to root of SDCard and webroot
+ * ex. 
+ * "" = http://192.168.0.1/
+ *
+ * or
+ * "directory" = http://192.168.0.1/
+ * Which searches in "directory" on the SDCard for files to serve.
+ *
+ * Can also use trivial file system, which is "tfs:"
+ * Consult MQX docs for how to use the tools for tfs 
+ *
+ * You only need one root per mount point.
+ * Refer to the Freescale demo labs for clarification on use
+ */
 const HTTPD_ROOT_DIR_STRUCT root_dir[] = {
-    { "", "a:" },     //SDCard
+    { "", "a:" },
     { 0, 0 }
 };
 
-
+/* Initialize the network stack and start webserver
+ *
+ * IP, subnet and gateway are set in ifconfig.h 
+ *
+ * Leave this alone, unless you know what you are doing*/
 void initialize_networking(void)
 {
     int_32                  error;
@@ -108,7 +130,5 @@ void initialize_networking(void)
 #endif
 
 }
-
-
 
 /* EOF */

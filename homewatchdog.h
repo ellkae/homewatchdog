@@ -7,6 +7,7 @@
 #ifndef _homewatchdog_h_
 #define _homewatchdog_h_
 
+/* Call the GPIO & LEDs by ID */
 typedef enum {
     GPIO1=0,
     GPIO2,
@@ -24,11 +25,11 @@ typedef enum {
     MAX_OUTPUTS
 } GPIO_t;
 
-boolean initializeIO(void);
-void setOutput(GPIO_t, boolean);
-boolean getOutput(GPIO_t);
-void allOutputOn(void);
-void allOutputOff(void);
-void allOutputToggle(void);
+boolean initializeIO(void);         /* Init */
+void setOutput(GPIO_t, boolean);    /* Set the on/off state of individual ports */
+boolean getOutput(GPIO_t);          /* Return the on/off state of requested port */
+void allOutputOn(void);             /* Demo - Turn everything on */
+void allOutputOff(void);            /* Demo - Turn everything off */
+void allOutputToggle(void);         /* Demo - Toggle on/off for everything */
 
 #endif

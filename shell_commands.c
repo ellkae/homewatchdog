@@ -28,8 +28,6 @@
 *
 * Comments: Special commands created for demo
 *
-*
-*
 *END************************************************************************/
 /*****************************************************************************
 * Filename : shell_commands.c
@@ -52,68 +50,64 @@
 *
 *END*---------------------------------------------------------------------*/
 
-int_32  Shell_set_time(int_32 argc, char_ptr argv[] )
-{
-  boolean           print_usage, shorthelp = FALSE;
-  int_32            return_code = SHELL_EXIT_SUCCESS;
-  TIME_STRUCT time;
-  DATE_STRUCT date;
-  int minute, hour;
+int_32  Shell_set_time(int_32 argc, char_ptr argv[] ){
+    boolean           print_usage, shorthelp = FALSE;
+    int_32            return_code = SHELL_EXIT_SUCCESS;
+    TIME_STRUCT time;
+    DATE_STRUCT date;
+    int minute, hour;
 
-   print_usage = Shell_check_help_request(argc, argv, &shorthelp );
+    print_usage = Shell_check_help_request(argc, argv, &shorthelp );
 
-   if (!print_usage)
-   {
-      if (argc !=2 )
-      {
-         printf("Error, invalid number of parameters\n");
-         return_code = SHELL_EXIT_ERROR;
-         print_usage=TRUE;
-      }
-      else
-      {
-        if(argv[1][5]!='\0')
-        {
-          printf("Invalid Argument. Input should be HH:MM\n");
+    if (!print_usage) {
+        if (argc !=2 ) {
+            printf("Error, invalid number of parameters\n");
+            return_code = SHELL_EXIT_ERROR;
+            print_usage=TRUE;
         }
-        else
-        {
-          _time_get(&time);
-          _time_to_date(&time,&date);
-          hour=(argv[1][0]-0x30)*10 + (argv[1][1]-0x30);
-          minute=(argv[1][3]-0x30)*10 + (argv[1][4]-0x30);
-          if(hour>=24 || minute>=60)
-          {
-            printf("Invalid Argument. Input should be HH:MM\n");
-          }
-          else
-          {
-            date.HOUR=hour;
-            date.MINUTE=minute;
-            _time_from_date(&date,&time);
-            _time_set(&time);
-            _rtc_sync_with_mqx(FALSE);
-          }
-        }
-      }
-   }
+        else {
+            if(argv[1][5]!='\0') {
+                printf("Invalid Argument. Input should be HH:MM\n");
+            }
+            else {
+                _time_get(&time);
+                _time_to_date(&time,&date);
+                hour=(argv[1][0]-0x30)*10 + (argv[1][1]-0x30);
+                minute=(argv[1][3]-0x30)*10 + (argv[1][4]-0x30);
 
-   if (print_usage)  {
-      print_usage_settime (shorthelp, argv[0], "<mode> - Select \"start\" or \"stop\"");
-   }
-   return return_code;
+                if(hour>=24 || minute>=60) {
+                    printf("Invalid Argument. Input should be HH:MM\n");
+                }
+                else {
+                    date.HOUR=hour;
+                    date.MINUTE=minute;
+                    _time_from_date(&date,&time);
+                    _time_set(&time);
+                    _rtc_sync_with_mqx(FALSE);
+                }
+            }
+        }
+    }
+
+    if (print_usage)  {
+        print_usage_settime (shorthelp, argv[0], "<mode> - Select \"start\" or \"stop\"");
+    }
+    return return_code;
 }
 
-static void print_usage_settime (boolean shorthelp, const char_ptr argv, const char_ptr longhelp)
-{
-  if (shorthelp)  {
-    printf("%s <HH:MM>\n", argv);
-  } else  {
-    printf("Usage: %s <HH:MM>\n", argv);
-    printf("   %s\n", longhelp);
-  }
+static void print_usage_settime (boolean shorthelp, const char_ptr argv, const char_ptr longhelp){
+    if (shorthelp) {
+        printf("%s <HH:MM>\n", argv);
+    } else  {
+        printf("Usage: %s <HH:MM>\n", argv);
+        printf("   %s\n", longhelp);
+    }
 }
 
+
+/* Unfortunately, did not finish these functions in time for the demo.
+ * Figured I would leave them here so people could see what I was
+ * aiming for */
 
 //int_32 shell_toggle_gpio(int_32 argc, char_ptr argv[]){
 //
@@ -124,7 +118,8 @@ static void print_usage_settime (boolean shorthelp, const char_ptr argv, const c
 //   }
 //   return return_code;
 //}
-//
+
+
 //static void print_usage_gpio (boolean shorthelp, const char_ptr argv, const char_ptr longhelp)
 //{
 //  if (shorthelp)  {
@@ -134,7 +129,8 @@ static void print_usage_settime (boolean shorthelp, const char_ptr argv, const c
 //    printf("   %s\n", longhelp);
 //  }
 //}
-//
+
+
 //int_32 shell_toggle_led(int_32 argc, char_ptr argv[]){
 //    if (!print_usage){}
 //
@@ -143,7 +139,8 @@ static void print_usage_settime (boolean shorthelp, const char_ptr argv, const c
 //   }
 //   return return_code;
 //}
-//
+
+
 //static void print_usage_led (boolean shorthelp, const char_ptr argv, const char_ptr longhelp)
 //{
 //  if (shorthelp)  {
@@ -153,7 +150,8 @@ static void print_usage_settime (boolean shorthelp, const char_ptr argv, const c
 //    printf("   %s\n", longhelp);
 //  }
 //}
-//
+
+
 //int_32 shell_toggle_all(int_32 argc, char_ptr argv[]){
 //    if (!print_usage){}
 //
@@ -162,7 +160,8 @@ static void print_usage_settime (boolean shorthelp, const char_ptr argv, const c
 //   }
 //   return return_code;
 //}
-//
+
+
 //static void print_usage_all (boolean shorthelp, const char_ptr argv, const char_ptr longhelp)
 //{
 //  if (shorthelp)  {

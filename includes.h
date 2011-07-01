@@ -7,15 +7,21 @@
 #ifndef _includes_h_
 #define _includes_h_
 
+/* OS + IO drivers */
 #include <mqx.h>
 #include <bsp.h> 
-#include <fio.h>
 
+/* Networking */
 #include <rtcs.h>
 #include "ifconfig.h"
 
+/* Filesystem */
+#include <fio.h>
+
+/* GPIO port defines */
 #include <io_gpio.h>
 
+/* Share GPIO_t with everyone */
 #include "homewatchdog.h"
 
 /* Macros */
@@ -23,6 +29,7 @@
 #define ON      TRUE
 #define OFF     FALSE
 
+/* Project GPIO defines */
 #define USR_GPIO1       (GPIO_PORT_C | GPIO_PIN0)
 #define USR_GPIO2       (GPIO_PORT_C | GPIO_PIN1)
 #define USR_GPIO3       (GPIO_PORT_C | GPIO_PIN2)
@@ -41,8 +48,6 @@
 #define START_TASK  1
 #define SDCARD_TASK 5
 #define SHELL_TASK  10
-
-/* Global Variables */
 
 /* Prototype for Tasks */
 extern void start_task(uint_32);
