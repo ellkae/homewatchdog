@@ -1,17 +1,50 @@
-Home Watchdog is a web-enabled home automation framework.
+Home Watch Dog is a web-enabled home automation framework.
 
 It is my 2011 senior project for Western Washington University, EET department.
+
+Functionally, the code here is identical to what I was using during project
+demonstrations June 2011.
+
+The demonstration of Home Watch Dog ran an embedded web server and was connected to
+a small scale model room through GPIO. The web site served from the server allowed
+a visitor to click a button on the web form to turn on/off the state of a light
+in the room.
+Full scenario functions were provided such as: all lights on/off and 
+security system on/off.
+
+--------------------------------------------------------------
+
+I do not plan to maintain this code in its current form, but I will allow 
+WWU EET students to contact me for clarification or pointers about it.
+
+I do intend to provide helpful comments for WWU EET seniors as an MQX RTOS reference.
+
+Also, at the moment take care when attributing authors if sourcing my code.
+All functions are either written by me or provided by Freescale demo code.
+This distinction will be cleared up in the future.
+
+The websites used in the demo were created using www.dotemplate.com but were
+also greatly modified to my needs, so take care when looking through the html.
+The JQuery javascript libraries were essential to the site navigation.
+
+You're getting what you pay for is the point I am trying to make. Enjoy.
+
+--------------------------------------------------------------
 
 Microcontroller: K60N512 ARM Cortex-M4
 Operating System: MQX RTOS
 
+--------------------------------------------------------------
+
 Because of licensing, I will only be providing the code for my project.
 The operating system was free, courtesy of Freescale with my MCU. The download is 
-hidden behind a licensing agreement that you must accept.
-
+hidden behind a licensing agreement wall.
 http://www.freescale.com/mqx
 
+--------------------------------------------------------------
 Thanks for showing interest in my project!
 
 -T.J.
 http://www.tjtelan.com
+--------------------------------------------------------------
+Home Watch Dog is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
