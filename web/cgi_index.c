@@ -15,15 +15,12 @@ extern MQX_FILE_PTR output_port;
 #include <string.h>
 #include <stdlib.h>
 
-extern LWSEM_STRUCT SD_Card;
-
-static void sdcard_status_fn(HTTPD_SESSION_STRUCT *session);
-
-const HTTPD_FN_LINK_STRUCT fn_lnk_tbl[] = {
-    { "s_status_fn",  sdcard_status_fn },
-    { 0, 0 } // DO NOT REMOVE - last item - end of table
-};
-
+/* Link between C code and javascript 
+ * Use:
+ * { "javascript_fcn_name", C_cgi_fcn_name }
+ * 
+ * Note: You can pick the javascript name.
+ * Check out javascript in webroot for examples */
 const HTTPD_CGI_LINK_STRUCT cgi_lnk_tbl[] = {
     { "rtcdata",        cgi_rtc_data},
     { "togglegpio1",    cgi_toggle_gpio1},
@@ -39,19 +36,19 @@ const HTTPD_CGI_LINK_STRUCT cgi_lnk_tbl[] = {
     { "toggleled2",     cgi_toggle_led2},
     { "toggleled3",     cgi_toggle_led3},
     { "toggleled4",     cgi_toggle_led4},
-    { "invert",         cgi_toggle_all},    
+    { "invert",         cgi_toggle_all},
     { "allon",          cgi_allOn},
     { "alloff",         cgi_allOff},
-    
-    // Demo related
+
+    /* Demo related */
     { "all_led_on",     cgi_all_led_on},
     { "all_led_off",    cgi_all_led_off},
     { "invert_led",     cgi_invert_led},
-    
+
     { "all_light_on",   cgi_all_light_on},
     { "all_light_off",  cgi_all_light_off},
     { "invert_light",   cgi_invert_light},
-    
+
     { "all_lock_on",    cgi_all_lock},
     { "all_lock_off",   cgi_all_unlock},
 
@@ -60,16 +57,8 @@ const HTTPD_CGI_LINK_STRUCT cgi_lnk_tbl[] = {
 };
 
 
-static void sdcard_status_fn(HTTPD_SESSION_STRUCT *session) {
-#if BSPCFG_ENABLE_ESDHC
-    if (SD_Card.VALUE)
-        httpd_sendstr(session->sock, "visible");
-    else
-#endif
-        httpd_sendstr(session->sock, "hidden");
-}
-
-// From Freescale
+/* From Freescale - 
+ * Get system time, send to http client on request */
 static int cgi_rtc_data(HTTPD_SESSION_STRUCT *session) {
     TIME_STRUCT time;
     DATE_STRUCT date;
@@ -84,18 +73,24 @@ static int cgi_rtc_data(HTTPD_SESSION_STRUCT *session) {
     return session->request.content_len;
 }
 
+/* Individual port control */
+
+/* Status of port currently only reads to shell -
+ * Easily would extend to web client with getOutput() */
+
+/* Begin GPIO */
 int cgi_toggle_gpio1(HTTPD_SESSION_STRUCT *session){
     printf("DEBUG: Toggle gpio1 ");
-    
+
     if(getOutput(GPIO1)){
         printf("OFF!\n");
     }
     else{
         printf("ON!\n");
     }
-    
+
     setOutput(GPIO1,!getOutput(GPIO1));
-    
+
     return session->request.content_len;
 }
 
@@ -210,6 +205,10 @@ int cgi_toggle_gpio9(HTTPD_SESSION_STRUCT *session){
     return session->request.content_len;
 }
 
+/* End GPIO */
+
+/* Begin LEDs */
+
 int cgi_toggle_led1(HTTPD_SESSION_STRUCT *session) {
     printf("DEBUG: Toggle led1 ");
     
@@ -266,6 +265,9 @@ int cgi_toggle_led4(HTTPD_SESSION_STRUCT *session){
     return session->request.content_len;
 }
 
+/* End LEDs*/
+
+/* Power demo */
 int cgi_toggle_all(HTTPD_SESSION_STRUCT *session){
     printf("DEBUG: Toggle all\n");
     allOutputToggle();
@@ -284,6 +286,7 @@ int cgi_allOff(HTTPD_SESSION_STRUCT *session){
     return session->request.content_len;
 }
 
+/* Demo board LEDs */
 int cgi_all_led_on(HTTPD_SESSION_STRUCT *session){
     setOutput(LED1,ON);
     setOutput(LED2,ON);
@@ -315,6 +318,7 @@ int cgi_invert_led(HTTPD_SESSION_STRUCT *session){
     return session->request.content_len;
 }
 
+/* Light Demo */
 int cgi_all_light_on(HTTPD_SESSION_STRUCT *session){
     setOutput(GPIO1,ON);
     setOutput(GPIO5,ON);
@@ -353,6 +357,7 @@ int cgi_invert_light(HTTPD_SESSION_STRUCT *session){
     return session->request.content_len;
 }
 
+/* Security demo */
 int cgi_all_lock(HTTPD_SESSION_STRUCT *session){
     setOutput(GPIO2,ON);
     setOutput(GPIO3,ON);
